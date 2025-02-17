@@ -71,16 +71,4 @@ const cashOut = () => {
             </router-link>
         </div>
     </div>
-
-
-    <!-- <button @click="cashOut">Cash Out</button> -->
-    <!-- <div v-for="item in cartStore.cartItems" :key="item.productID" class="flex items-center justify-center m-4 text-center">
-        <Button @click="cartStore.decrementQuantity(item)" class="bg-red-500 hover:bg-red-800"><i
-                class="pi pi-minus-circle"></i></Button>
-        <Input class="w-12 ml-2 text-center" type="number" placeholder="QuantitySold" v-model="item.cartQuantity" />
-        <Button @click="cartStore.addToCart(item)" class="bg-green-500 hover:bg-green-800 ml-2"><i
-                class="pi pi-plus-circle"></i></Button>
-    </div> -->
-
-
 </template>

@@ -1,10 +1,9 @@
+import Sidebar from '@/layouts/common/Sidebar.vue'
+import Cart from '@/module/cart/cart.vue'
+import Cashier from '@/module/cashier/cashier.vue'
+import Manager from '@/module/manager/manager.vue'
+import StockPage from '@/module/stock/StockPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import Sidebar from '../views/Sidebar.vue'
-import Products from '../views/products/StockPage.vue'
-import Cart from '../views/products/cart.vue'
-import Cashier from '../views/products/cashier.vue'
-import Manager from '../views/products/manager.vue'
-import StockPage from '../ui/data-table/data-table.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,8 +15,8 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'products',
-          component: Products,
+          name: 'stock',
+          component: StockPage,
         },
         {
           path: 'cart',
@@ -33,11 +32,6 @@ const router = createRouter({
           path: 'manager',
           name: 'manager',
           component: Manager,
-        },
-        {
-          path: 'stockPage',
-          name: 'stockPage',
-          component: StockPage,
         },
       ],
     },

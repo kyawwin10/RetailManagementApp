@@ -23,7 +23,7 @@ const cartStore = useCartStore();
                     <div class="flex flex-col justify-between space-y-[10px]">
                         <router-link to="/" class="inline-flex relative items-center py-[10px] px-[10px] w-full text-md"
                             :class="{ 'text-yellow-500': route.path === '/' }">
-                            Products
+                            Stock Page
                         </router-link>
                         <router-link to="/cart"
                             class="inline-flex relative items-center py-[10px] px-[10px] w-full text-md"
@@ -40,11 +40,11 @@ const cartStore = useCartStore();
                             :class="{ 'text-yellow-500': route.path === '/manager' }">
                             Manager Page
                         </router-link>
-                        <router-link to="/stockPage"
+                        <!-- <router-link to="/stockPage"
                             class="inline-flex relative items-center py-[10px] px-[10px] w-full text-md"
                             :class="{ 'text-yellow-500': route.path === '/stockPage' }">
                             Stock Page
-                        </router-link>
+                        </router-link> -->
                     </div>
                 </div>
             </div>

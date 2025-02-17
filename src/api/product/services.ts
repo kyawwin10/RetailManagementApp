@@ -31,7 +31,7 @@ const deleteProduct = async (payload: ProductDeletePayload): Promise<any> => {
   const response = await axiosInstance.delete(`Product/DeleteProduct`, {
     data: payload,
   });
-  toast.success(response.data.message);
+  // toast.success(response.data.message);
   return response.data;
 };
 

@@ -1,37 +1,12 @@
 <script setup lang="ts">
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
 import { getProductList, DeleteProduct } from '@/api/product/queries'
 import 'primeicons/primeicons.css'
-import { useCartStore } from '@/stores/useCartStore'
 import { reactive } from 'vue'
 import ProductDialog from '@/components/dialog/ProductDialog.vue'
-import type { GetAllProductyPayload, ProductDeletePayload, ProductUpdatePayload } from '@/api/product/types'
+import type { ProductDeletePayload, ProductUpdatePayload } from '@/api/product/types'
 import Button from '@/components/ui/button/Button.vue'
-import {
-  Pagination,
-  PaginationEllipsis,
-  PaginationFirst,
-  PaginationLast,
-  PaginationList,
-  PaginationListItem,
-  PaginationNext,
-  PaginationPrev,
-} from '@/components/ui/pagination'
-import { h } from 'vue'
-import type { ColumnDef } from '@tanstack/vue-table'
 import DataTable from '@/components/ui/data-table/data-table.vue'
-import { columns } from './components/table/comlun-def'
-
-const cartStore = useCartStore();
+import { columns } from '@/components/table/comlun-def'
 
 const productDialog = reactive({
   isOpen: false,
@@ -92,7 +67,7 @@ const deleteClick = (product: ProductDeletePayload) => {
   <div v-if="isError" class="text-center text-red-500">
     Error: {{ error?.message }}
   </div>
-  <DataTable :data="products ?? []" :columns="columns"/>
+  <DataTable :data="products || []" :columns="columns({editClick, deleteClick})"/>
   
   <ProductDialog :dialogData="productDialog" :handleClose="handleClose" />
 </template>

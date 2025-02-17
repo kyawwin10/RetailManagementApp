@@ -23,9 +23,9 @@ import { useForm } from 'vee-validate'
 import { watch } from 'vue'
 import { toast } from 'vue3-toastify'
 import * as z from 'zod'
-// import { useToast } from '../ui/toast'
+import { useQueryClient } from '@tanstack/vue-query'
 
-// const { toast } = useToast()
+const queryClient = useQueryClient();
 
 interface ProductDialogState {
     isOpen: boolean
@@ -60,12 +60,10 @@ const { handleSubmit, setValues, resetForm } = useForm({
 // Add Product Mutation
 const { mutate: addProduct } = AddProduct.useMutation({
     onSuccess: () => {
-        toast.success("Product Create Successfully")
-        // toast({
-        //     title: 'Product Created successfully',
-        // });
-        props.handleClose()
+        toast.success("Product Create Successfully");
+        props.handleClose();
         resetForm();
+        queryClient.invalidateQueries({ queryKey: ['getProductList'] })
     },
     onError: (error) => {
         console.log('Error adding product:', error);
@@ -76,11 +74,9 @@ const { mutate: addProduct } = AddProduct.useMutation({
 const { mutate: updateProduct } = UpdateProduct.useMutation({
     onSuccess: () => {
         toast.success('Product Updated successfully');
-        // toast({
-        //     title: 'Product Updated successfully',
-        // });
         props.handleClose()
         resetForm();
+        queryClient.invalidateQueries({ queryKey: ['getProductList'] })
     },
     onError: (error) => {
         console.log('Error updating product:', error);

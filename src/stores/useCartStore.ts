@@ -33,7 +33,9 @@ export const useCartStore = defineStore("cart", {
       } else {
         if (item.stock > 0) {
           // Add new item to cart
-          this.cartItems.push({ ...item, cartQuantity: 1 });
+          // this.cartItems.push({ ...item, cartQuantity: 1 });
+          const cartItem: CartProductType = { ...item, cartQuantity: 1 };
+          this.cartItems.push(cartItem);
           toast.success("Item added to cart Successfully.", {
             autoClose: 2000,
           });
@@ -46,7 +48,7 @@ export const useCartStore = defineStore("cart", {
       }
     },
 
-    decrementQuantity(item: CartProductType) {
+    decrementQuantity(item: GetAllProductyPayload) {
       let cartIndex = this.cartItems.findIndex(
         product => product.productID === item.productID
       );
