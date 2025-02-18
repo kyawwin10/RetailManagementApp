@@ -60,10 +60,9 @@ export const AddProduct = {
 
   export const salesReport = {
     useQuery: (opt?: UseQueryOptions<SaleReportPayload>) =>
-      useQuery<SaleReportPayload>({
+      useQuery<SaleReportPayload, Error>({
         queryKey: ['salesReport'],
         queryFn: SaleService.salesReport,
         ...opt, // Pass additional options if needed
       }),
-  };
-  
+  }

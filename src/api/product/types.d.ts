@@ -31,7 +31,7 @@ export type ProductSalePayload  = {
 }
 
 export type GetAllSalePayload = {
-    saleID: String
+    saleID: string
     productID: string
     quantitySold: number
     totalAmount: number

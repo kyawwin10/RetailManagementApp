@@ -1,4 +1,4 @@
-import type { GetAllProductyPayload } from "@/api/product/types"
+import type { GetAllProductyPayload, GetAllSalePayload } from "@/api/product/types"
 import { useCartStore } from "@/stores/useCartStore"
 import type { ColumnDef } from "@tanstack/vue-table"
 import { h } from "vue"
@@ -103,5 +103,49 @@ export const columns = ({ editClick, deleteClick }: { editClick: (data: GetAllPr
       ]);
     },
   }
+]
 
+export const cols: ColumnDef<GetAllSalePayload>[] = [
+  {
+    accessorKey: 'saleID',
+    header: () => h('div', { class: 'text-center' }, 'No'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-center font-medium' }, row.index + 1)
+    },
+  },
+  {
+    accessorKey: 'productID',
+    header: () => h('div', { class: 'text-center' }, 'ProductID'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-center font-medium' }, row.original.productID)
+    },
+  },
+  {
+    accessorKey: 'quantitySold',
+    header: () => h('div', { class: 'text-center' }, 'QuantitySold'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-center font-medium' }, row.original.quantitySold)
+    },
+  },
+  {
+    accessorKey: 'totalAmount',
+    header: () => h('div', { class: 'text-center' }, 'TotalAmount'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-center font-medium' }, row.original.totalAmount)
+    },
+  },
+  {
+    accessorKey: 'totalProfit',
+    header: () => h('div', { class: 'text-center' }, 'TotalProfit'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-center font-medium' }, row.original.totalProfit)
+    },
+  },
+  {
+    accessorKey: 'salesDate',
+    header: () => h('div', { class: 'text-center' }, 'SalesDate'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-center font-medium' }, row.original.salesDate)
+    },
+  },
 ]
